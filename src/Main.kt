@@ -9,7 +9,7 @@ fun addTask(taskList: MutableList<Task>) {
 
     // Get Task Title
     print("Enter task title: ")
-    val title = readLine() ?: return // If input is null, exit function
+    val title = readLine() ?: return
 
     // Get Task Description
     print("Enter task description: ")
@@ -43,7 +43,6 @@ fun viewTasks(taskList: List<Task>) {
 fun markTaskComplete(taskList: MutableList<Task>) {
     println("\n--- Mark Task Complete ---")
 
-    // First, show the current list so the user knows which number to pick
     viewTasks(taskList)
 
     if (taskList.isEmpty()) {
@@ -56,11 +55,9 @@ fun markTaskComplete(taskList: MutableList<Task>) {
     val input = readLine()
     val taskNumber = input?.toIntOrNull()
 
-    // Check if input is a valid number and within the list range
     if (taskNumber != null && taskNumber > 0 && taskNumber <= taskList.size) {
-        val index = taskNumber - 1 // Convert user's number (1-based) to list index (0-based)
+        val index = taskNumber - 1
 
-        // Safely access the task and modify its status (Variable modification)
         taskList[index].isComplete = true
 
         println("SUCCESS: Task #$taskNumber marked as COMPLETE.")
@@ -82,13 +79,11 @@ fun removeTask(taskList: MutableList<Task>) {
 
     print("Enter the number of the task to REMOVE: ")
 
-    // Read the input and convert it to an integer index
     val input = readLine()
     val taskNumber = input?.toIntOrNull()
 
-    // Check if input is a valid number and within the list range
     if (taskNumber != null && taskNumber > 0 && taskNumber <= taskList.size) {
-        val index = taskNumber - 1 // Convert user's number (1-based) to list index (0-based)
+        val index = taskNumber - 1
 
         // Safely remove the task from the list (Collections requirement)
         val removedTask = taskList.removeAt(index)
@@ -100,7 +95,7 @@ fun removeTask(taskList: MutableList<Task>) {
     }
 }
 
-// --- 2. Main Execution Function ---
+//  Main Execution Function
 fun main() {
     // This mutable list stores all the Task objects (Collections Requirement).
     val taskList = mutableListOf<Task>()
